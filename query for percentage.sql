@@ -12,7 +12,7 @@ INNER JOIN States AS s ON s.StateID = u.StateID
 GROUP BY u.StateID
 ORDER BY u.StateID;
 
-SELECT s.State, actual.percentage, api.percentage FROM States as s
+SELECT s.State, actual.percentage AS ActualPct, api.percentage AS MeetUpPct FROM States as s
 INNER JOIN (SELECT s.StateID, ROUND(SUM(cp.Population)/(SELECT SUM(cp.Population) FROM CountyPopulations AS cp)*100, 2) 
 AS Percentage FROM CountyPopulations as cp
 INNER JOIN States AS s ON s.StateID = cp.StateID
